@@ -9,24 +9,31 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container centered">
         <h1 class="text-center">Credit Card Input!</h1>
         <h3 class="text-center">Credit Card Form</h3>
         <form>
-            <div class="mb-3">
+            <div class="m-5 flex">
                 <input type="text" placeholder="Card Number" class="form-control" id="card-number"
                     aria-describedby="card-number">
             </div>
-            <div class="mb-3">
+            <div class="m-5 flex">
                 <input type="text" placeholder="Name" class="form-control" id="card-user-name" aria-describedby="card-number">
             </div>
-            <div class="mb-3">
-                <input type="text" placeholder="Valid Thru" class="form-control" id="expiry-date" aria-describedby="expiry-date">
+            <div class="m-5 flex">
+                <select name="country-code" id="country-code" class="form-control select flex-s m-r-10">
+                    <option>+91</option>
+                    <option>001</option>
+                </select>
+                <input type="text" placeholder="Phone Number" class="form-control" id="expiry-date" aria-describedby="expiry-date">
             </div>
-            <div class="mb-3">
-                <input type="password" placeholder="CVC" class="form-control" id="cvc" aria-describedby="cvc">
+            <div class="m-5 flex flex-wrap">
+                <input type="text" placeholder="Valid Thru" class="form-control m-r-10 expiry-date" id="expiry-date" aria-describedby="expiry-date">
+                <input type="password" placeholder="CVC" class="form-control flex-s" id="cvc" aria-describedby="cvc">
             </div>
-            <button type="submit" class="btn btn-primary w-100">Submit</button>
+            <div class="m-5 flex">
+                <input type="submit" class="btn w-100" value="Submit">
+            </div>
         </form>
     </div>
 </body>
