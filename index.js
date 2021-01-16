@@ -62,6 +62,47 @@ const removeAllAcceptWordChars = (e) => {
 cardNameInputElement.addEventListener('keyup', removeAllAcceptWordChars);
 cardNameInputElement.addEventListener('keypress', removeAllAcceptWordChars);
 
+// on change - country-code
+
+const removeAllNonDigits = (e) => {
+    let value = e.target.value;
+    // remove only digits and 2 or more spaces
+    if(/[\D]/g.test(value)) {
+        value = value.replace(/[\D]/g, '');
+        showError(e.target);
+    }
+
+    e.target.value = value;
+}
+
+// phone-number
+const phoneNumberElement = document.getElementById('phone-number');
+phoneNumberElement.addEventListener('keyup', removeAllNonDigits);
+phoneNumberElement.addEventListener('keypress', removeAllNonDigits);
+
+// expiry-date
+const expiryDateInputElement = document.getElementById('expiry-date');
+const removeAllNonDigitsAndAddSlash = (e) => {
+    let date = e.target.value;
+
+    if(/[\D]/g.test(date)) {
+        date = date.replace(/[\D]/g, '');
+        showError(e.target);
+    }
+
+    let validatedDate = date;
+    if(date.length > 2)
+        validatedDate = date.slice(0, 2) + '/' + date.slice(3, date.length);
+
+    e.target.value = validatedDate;
+}
+expiryDateInputElement.addEventListener('keyup', removeAllNonDigitsAndAddSlash);
+expiryDateInputElement.addEventListener('keypress', removeAllNonDigitsAndAddSlash);
+
+// cvc
+const cvvInputElement = document.getElementById('cvc');
+cvvInputElement.addEventListener('keyup', removeAllNonDigits);
+cvvInputElement.addEventListener('keypress', removeAllNonDigits);
 
 function showError(targetElement) {
     // add err to the element
