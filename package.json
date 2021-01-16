@@ -5,15 +5,17 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "sass ./styles/style.scss ./build/style.css --watch",
+    "build": "sass ./styles/style.scss ./build/style.css"
   },
   "keywords": [],
   "author": "Vipul Dessai",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^4.5.3",
     "express": "^4.17.1",
     "jquery": "^3.5.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "sass": "^1.32.4"
   }
 }
