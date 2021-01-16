@@ -137,14 +137,14 @@ ul {
         margin-bottom: 0.5em;
     }
 }
-.credit-card {
+.credit-card-front {
     margin: 0 auto;
     width: 40%;
     background-color: #8896A0;
     color: #F7F7F7;
     border-radius: 4px;
+    padding-top: 3em;
     .dummy-card-number {
-        padding-top: 3em;
         text-align: center;
         font-size: 25px;
     }
@@ -156,6 +156,29 @@ ul {
             width: 150px;
             white-space: nowrap;
         }
+    }
+    @include xl {
+        width: 70%;
+    }
+    @include lg {
+        width: 80%;
+    }
+    @include sm {
+        width: 90%;
+    }
+}
+.credit-card-back {
+    padding-top: 3em;
+    margin: 0 auto;
+    width: 40%;
+    background-color: #8896A0;
+    color: #F7F7F7;
+    border-radius: 4px;
+    .dummy-cvc {
+        text-align: right;
+        font-size: 25px;
+        padding-right: 50px;
+        background-color: #adadad;
     }
     @include xl {
         width: 70%;
