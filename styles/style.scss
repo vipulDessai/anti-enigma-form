@@ -1,31 +1,37 @@
-$screen-sm-min: 540px;
-$screen-md-min: 768px;
-$screen-lg-min: 992px;
-$screen-xl-min: 1200px;
+$screen-sm-max: 540px;
+$screen-md-max: 800px;
+$screen-lg-max: 1100px;
+$screen-xl-max: 1500px;
 
 @mixin sm {
-    @media only screen and (max-width: $screen-sm-min) {
+    @media only screen and (max-width: $screen-sm-max) {
         @content;
     }
 }
 @mixin md {
-    @media only screen and (max-width: $screen-md-min) {
+    @media only screen and (max-width: $screen-md-max) {
         @content;
     }
 }
 @mixin lg {
-    @media only screen and (max-width: $screen-lg-min) {
+    @media only screen and (max-width: $screen-lg-max) {
         @content;
     }
 }
 @mixin xl {
-    @media only screen and (max-width: $screen-xl-min) {
+    @media only screen and (max-width: $screen-xl-max) {
         @content;
     }
 }
 
 * {
     font-family: "Segoe UI",Arial,sans-serif;
+}
+li {
+    list-style: none;
+}
+ul {
+    padding: 0;
 }
 .text-center {
     text-align: center;
@@ -130,4 +136,37 @@ $screen-xl-min: 1200px;
         margin-right: 0;
         margin-bottom: 0.5em;
     }
+}
+.credit-card {
+    margin: 0 auto;
+    width: 40%;
+    background-color: #8896A0;
+    color: #F7F7F7;
+    border-radius: 4px;
+    .dummy-card-number {
+        padding-top: 3em;
+        text-align: center;
+        font-size: 25px;
+    }
+    .personal-data {
+        justify-content: space-evenly;
+        .dummy-card-user-name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 150px;
+            white-space: nowrap;
+        }
+    }
+    @include xl {
+        width: 70%;
+    }
+    @include lg {
+        width: 80%;
+    }
+    @include sm {
+        width: 90%;
+    }
+}
+.developer {
+    margin-top: 2em;
 }

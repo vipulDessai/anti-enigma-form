@@ -9,32 +9,56 @@
 </head>
 
 <body>
-    <div class="container centered">
+    <div class="container">
         <h1 class="text-center">Credit Card Input!</h1>
-        <h3 class="text-center">Credit Card Form</h3>
+        <p class="text-center">Credit Card Form</p>
+        <div class="credit-card">
+            <ul>
+                <li>
+                    <p class="dummy-card-number">&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull;</p>
+                </li>
+                <li>
+                    <ul class="personal-data flex">
+                        <li>
+                            <p class="dummy-card-user-name">Vipul Dessai</p>
+                        </li>
+                        <li>
+                            <ul>
+                                <li>VALID THRU</li>
+                                <li class="text-center">&bull;&bull;/&bull;&bull;</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
         <form>
             <div class="m-5 flex">
                 <input type="text" placeholder="Card Number" class="form-control" id="card-number"
-                    aria-describedby="card-number">
+                    aria-describedby="card-number" maxlength="20">
             </div>
             <div class="m-5 flex">
-                <input type="text" placeholder="Name" class="form-control" id="card-user-name" aria-describedby="card-number">
+                <input type="text" placeholder="Name" class="form-control" id="card-user-name"
+                    aria-describedby="card-user-name">
             </div>
             <div class="m-5 flex">
                 <select name="country-code" id="country-code" class="form-control select flex-s m-r-10">
                     <option>+91</option>
                     <option>001</option>
                 </select>
-                <input type="text" placeholder="Phone Number" class="form-control" id="expiry-date" aria-describedby="expiry-date">
+                <input type="text" placeholder="Phone Number" class="form-control" id="expiry-date"
+                    aria-describedby="expiry-date" maxlength="10">
             </div>
             <div class="m-5 flex flex-wrap">
-                <input type="text" placeholder="Valid Thru" class="form-control m-r-10 expiry-date" id="expiry-date" aria-describedby="expiry-date">
+                <input type="text" placeholder="Valid Thru" class="form-control m-r-10 expiry-date" id="expiry-date"
+                    aria-describedby="expiry-date">
                 <input type="password" placeholder="CVC" class="form-control flex-s" id="cvc" aria-describedby="cvc">
             </div>
             <div class="m-5 flex">
                 <input type="submit" class="btn w-100" value="Submit">
             </div>
         </form>
+        <p class="developer text-center">Developed by Vipul Dessai</p>
     </div>
 </body>
 
