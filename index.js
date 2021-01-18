@@ -66,7 +66,8 @@ cardNameInputElement.addEventListener('keypress', removeAllAcceptWordChars);
 // on change - country-code
 const countryCodeInputElement = document.getElementById('country-code');
 const onChangeCountryCode = (e) => {
-
+    phoneNumberElement.value = '';
+    phoneNumberElement.maxLength = e.target.selectedOptions[0].dataset.maxlength;
 }
 countryCodeInputElement.addEventListener('change', onChangeCountryCode);
 
