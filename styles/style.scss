@@ -82,11 +82,14 @@ ul {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    background-color: #2590f5ea;
+    border-color: #2781e9be;
+    color: #fff;
 }
 .btn:hover, .btn:focus {
-    color: #333;
-    background-color: #e6e6e6;
-    border-color: #adadad;
+    color: #fff;
+    background-color: #4a87c0ea;
+    border-color: #2781e9be;
     text-decoration: none;
 }
 .m-5 {
