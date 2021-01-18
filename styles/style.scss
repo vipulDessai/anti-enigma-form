@@ -112,6 +112,9 @@ ul {
         }
     }
 }
+.hide {
+    display: none;
+}
 
 .container {
     margin: 0 auto;
@@ -184,6 +187,17 @@ ul {
                 margin-right: 0;
                 margin-bottom: 0.5em;
             }
+        }
+    }
+    .error-tooltip {
+        position: fixed;
+        background: #8896A0;
+        color: #F7F7F7;
+        padding: 0.5em;
+        border-radius: 4px;
+        p {
+            margin: 0;
+            font-size: 15px;
         }
     }
     .developer {
