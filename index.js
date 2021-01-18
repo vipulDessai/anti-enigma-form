@@ -9,9 +9,13 @@ const removeAllCharsAcceptDigits = (e) => {
     let cardNumberWithSpaces = e.target.value;
     let cardNumber = cardNumberWithSpaces.replace(/[\s]/g, '');
 
+    let errorNotFound = true;
+
     if(/[^\s\d]/g.test(cardNumber)) {
         cardNumber = cardNumberWithSpaces.replace(/[^\s\d]/g, '');
         showError(e.target, 'Please enter numbers only');
+        
+        errorNotFound = false;
     }
 
     let i = 0;
@@ -35,6 +39,9 @@ const removeAllCharsAcceptDigits = (e) => {
     }
 
     e.target.value = validatedCardNumber;
+
+    if(errorNotFound)
+        hideErrorToolTip(e);
     
     dummyCardNumberElement.innerText = validatedCardNumber + '•••• •••• •••• ••••'.substring(validatedCardNumber.length, _cardNumberMaxLength);
 }
@@ -45,25 +52,37 @@ const cardNameInputElement = document.getElementById('card-user-name');
 const dummyCardNameElement = document.getElementById('dummy-card-user-name');
 const removeAllAcceptWordChars = (e) => {
     let cardName = e.target.value;
+
+    let errorNotFound = true;
+
     // remove only digits and 2 or more spaces
     if(/[\d]/g.test(cardName)) {
         cardName = cardName.replace(/[\d]/g, '');
         showError(e.target, 'Please dont enter any digits');
+
+        errorNotFound = false;
     }
 
     // check if the card number has more than 1 space
     if(/[\s]{2,}/g.test(cardName)) {
         cardName = cardName.replace(/[\s]{2,}/g, ' ');
         showError(e.target, null);
+
+        errorNotFound = false;
     }
 
     // remove non words and non spaces
     if(/[^\w\s]/g.test(cardName)) {
         cardName = cardName.replace(/[^\w\s]/g, '');
         showError(e.target, 'Please dont enter any special characters');
+
+        errorNotFound = false;
     }
 
     e.target.value = cardName;
+
+    if(errorNotFound)
+        hideErrorToolTip(e);
 
     const dummyString = 'XXXX XXXX XXXX';
     dummyCardNameElement.innerText = cardName.length ? cardName : dummyString;
@@ -81,15 +100,23 @@ countryCodeInputElement.addEventListener('change', onChangeCountryCode);
 
 const removeAllNonDigits = (e) => {
     let value = e.target.value;
+
+    let errorNotFound = true;
+
     // remove only digits and 2 or more spaces
     if(/[\D]/g.test(value)) {
         value = value.replace(/[\D]/g, '');
         showError(e.target, 'Please enter digits only');
+
+        errorNotFound = false;
     }
 
     e.target.value = value;
 
-    if(e.target.id == "cvc")
+    if(errorNotFound)
+        hideErrorToolTip(e);
+
+    if(e.target.id == 'cvc')
         dummyCvvElement.innerText = value + '•••'.substring(value.length, _cvvMaxLength)
 }
 
@@ -104,9 +131,16 @@ const dummyExpiryDateElement = document.getElementById('dummy-valid-thru');
 const removeAllNonDigitsAndAddSlash = (e) => {
     let date = e.target.value;
 
+    let errorNotFound = true;
+
+    // remove added forward slash
+    date = date.replace(/\//g, '');
+
     if(/[\D]/g.test(date)) {
         date = date.replace(/[\D]/g, '');
         showError(e.target, 'Please dont enter characters or special characters');
+
+        errorNotFound = false;
     }
 
     let i = 0;
@@ -131,6 +165,9 @@ const removeAllNonDigitsAndAddSlash = (e) => {
     }
 
     e.target.value = validatedDate;
+
+    if(errorNotFound)
+        hideErrorToolTip(e);
 
     dummyExpiryDateElement.innerText = validatedDate + '••/••'.substring(validatedDate.length, _expiryDateMaxLength);
 
@@ -164,10 +201,22 @@ const onBlurCvv = (e) => {
 cvvInputElement.addEventListener('focus', onfucusCvv);
 cvvInputElement.addEventListener('blur', onBlurCvv);
 
+const errorTooltip = document.getElementById('error-tooltip');
+// hide tooltip on each blur event
+const hideErrorToolTip = (e) => {
+    errorTooltip.classList.add('hide');
+}
+cardNumberInputElement.addEventListener('blur', hideErrorToolTip);
+cardNameInputElement.addEventListener('blur', hideErrorToolTip);
+phoneNumberElement.addEventListener('blur', hideErrorToolTip);
+expiryDateInputElement.addEventListener('blur', hideErrorToolTip);
+cvvInputElement.addEventListener('blur', hideErrorToolTip);
+
 // add err to the element
-function showError(targetElement, message) {
+const showError = (targetElement, message) => {
     if(!message)
         return;
     
-    
+    errorTooltip.classList.remove('hide');
+    errorTooltip.querySelector('p').innerText = message;
 }
