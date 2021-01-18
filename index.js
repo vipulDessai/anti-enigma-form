@@ -1,8 +1,10 @@
 // 16 + 3 spaces
 const _cardNumberMaxLength = 19;
-const _cvvMaxLength = 5;
+const _expiryDateMaxLength = 5;
+const _cvvMaxLength = 3;
 
 const cardNumberInputElement = document.getElementById('card-number');
+const dummyCardNumberElement = document.getElementById('dummy-card-number');
 const removeAllCharsAcceptDigits = (e) => {
     let cardNumberWithSpaces = e.target.value;
     let cardNumber = cardNumberWithSpaces.replace(/[\s]/g, '');
@@ -33,11 +35,14 @@ const removeAllCharsAcceptDigits = (e) => {
     }
 
     e.target.value = validatedCardNumber;
+    
+    dummyCardNumberElement.innerText = validatedCardNumber + '•••• •••• •••• ••••'.substring(validatedCardNumber.length, _cardNumberMaxLength);
 }
 cardNumberInputElement.addEventListener('keypress', removeAllCharsAcceptDigits);
 cardNumberInputElement.addEventListener('keyup', removeAllCharsAcceptDigits);
 
 const cardNameInputElement = document.getElementById('card-user-name');
+const dummyCardNameElement = document.getElementById('dummy-card-user-name');
 const removeAllAcceptWordChars = (e) => {
     let cardName = e.target.value;
     // remove only digits and 2 or more spaces
@@ -59,6 +64,9 @@ const removeAllAcceptWordChars = (e) => {
     }
 
     e.target.value = cardName;
+
+    const dummyString = 'XXXX XXXX XXXX';
+    dummyCardNameElement.innerText = cardName.length ? cardName : dummyString;
 }
 cardNameInputElement.addEventListener('keyup', removeAllAcceptWordChars);
 cardNameInputElement.addEventListener('keypress', removeAllAcceptWordChars);
@@ -80,6 +88,9 @@ const removeAllNonDigits = (e) => {
     }
 
     e.target.value = value;
+
+    if(e.target.id == "cvc")
+        dummyCvvElement.innerText = value + '•••'.substring(value.length, _cvvMaxLength)
 }
 
 // phone-number
@@ -89,6 +100,7 @@ phoneNumberElement.addEventListener('keypress', removeAllNonDigits);
 
 // expiry-date
 const expiryDateInputElement = document.getElementById('expiry-date');
+const dummyExpiryDateElement = document.getElementById('dummy-valid-thru');
 const removeAllNonDigitsAndAddSlash = (e) => {
     let date = e.target.value;
 
@@ -120,8 +132,10 @@ const removeAllNonDigitsAndAddSlash = (e) => {
 
     e.target.value = validatedDate;
 
+    dummyExpiryDateElement.innerText = validatedDate + '••/••'.substring(validatedDate.length, _expiryDateMaxLength);
+
     // check valid expiry date
-    if(validatedDate.length == _cvvMaxLength) {
+    if(validatedDate.length == _expiryDateMaxLength) {
         const currentYear = new Date().getFullYear();
         const [month, year] = validatedDate.split('/');
         if(month < 1 && month > 12)
@@ -135,6 +149,7 @@ expiryDateInputElement.addEventListener('keypress', removeAllNonDigitsAndAddSlas
 
 // cvc
 const cvvInputElement = document.getElementById('cvc');
+const dummyCvvElement = document.getElementById('dummy-cvc');
 cvvInputElement.addEventListener('keyup', removeAllNonDigits);
 cvvInputElement.addEventListener('keypress', removeAllNonDigits);
 
