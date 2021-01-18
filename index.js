@@ -138,7 +138,7 @@ const removeAllNonDigitsAndAddSlash = (e) => {
 
     if(/[\D]/g.test(date)) {
         date = date.replace(/[\D]/g, '');
-        showError(e.target, 'Please dont enter characters or special characters');
+        showError(e.target, 'Please dont enter characters');
 
         errorNotFound = false;
     }
@@ -175,10 +175,10 @@ const removeAllNonDigitsAndAddSlash = (e) => {
     if(validatedDate.length == _expiryDateMaxLength) {
         const currentYear = new Date().getFullYear();
         const [month, year] = validatedDate.split('/');
-        if(month < 1 && month > 12)
-            showError(e.target, 'Invalid Month')
+        if(month < 1 || month > 12)
+            showError(e.target, 'Please enter a month between 1 to 12');
         else if(`${20}${year}` < currentYear)
-            showError(e.target, 'Invalid Year')
+            showError(e.target, `Please enter a year greater than ${currentYear}`);
     }
 }
 expiryDateInputElement.addEventListener('keyup', removeAllNonDigitsAndAddSlash);
@@ -216,6 +216,9 @@ cvvInputElement.addEventListener('blur', hideErrorToolTip);
 const showError = (targetElement, message) => {
     if(!message)
         return;
+
+    errorTooltip.style.top = `${targetElement.offsetTop + 35}px`;
+    errorTooltip.style.left = `${targetElement.offsetLeft + 5}px`;
     
     errorTooltip.classList.remove('hide');
     errorTooltip.querySelector('p').innerText = message;
