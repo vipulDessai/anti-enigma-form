@@ -63,6 +63,11 @@ cardNameInputElement.addEventListener('keyup', removeAllAcceptWordChars);
 cardNameInputElement.addEventListener('keypress', removeAllAcceptWordChars);
 
 // on change - country-code
+const countryCodeInputElement = document.getElementById('country-code');
+const onChangeCountryCode = (e) => {
+
+}
+countryCodeInputElement.addEventListener('change', onChangeCountryCode);
 
 const removeAllNonDigits = (e) => {
     let value = e.target.value;
@@ -103,6 +108,17 @@ expiryDateInputElement.addEventListener('keypress', removeAllNonDigitsAndAddSlas
 const cvvInputElement = document.getElementById('cvc');
 cvvInputElement.addEventListener('keyup', removeAllNonDigits);
 cvvInputElement.addEventListener('keypress', removeAllNonDigits);
+
+const onfucusCvv = (e) => {
+    const card = document.getElementById('credit-card');
+    card.classList.add('active');
+}
+const onBlurCvv = (e) => {
+    const card = document.getElementById('credit-card');
+    card.classList.remove('active');
+}
+cvvInputElement.addEventListener('focus', onfucusCvv);
+cvvInputElement.addEventListener('blur', onBlurCvv);
 
 function showError(targetElement) {
     // add err to the element

@@ -116,10 +116,10 @@ ul {
         position: relative;
         margin: 0 auto;
         height: 200px;
-        &:hover .credit-card-front {
+        &:hover .credit-card-front, &.active .credit-card-front {
             transform: rotateY(-180deg)
         }
-        &:hover .credit-card-back {
+        &:hover .credit-card-back, &.active .credit-card-back {
             transform: rotateY(0deg);
         }
         .credit-card-front, .credit-card-back {
