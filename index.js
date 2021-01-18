@@ -138,7 +138,7 @@ const removeAllNonDigitsAndAddSlash = (e) => {
 
     if(/[\D]/g.test(date)) {
         date = date.replace(/[\D]/g, '');
-        showError(e.target, 'Please dont enter characters');
+        showError(e.target, 'Please dont enter any characters');
 
         errorNotFound = false;
     }
