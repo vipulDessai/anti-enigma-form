@@ -1,25 +1,13 @@
 $screen-sm-max: 540px;
-$screen-md-max: 800px;
-$screen-lg-max: 1100px;
-$screen-xl-max: 1500px;
+$screen-lg-min: 540px;
 
 @mixin sm {
     @media only screen and (max-width: $screen-sm-max) {
         @content;
     }
 }
-@mixin md {
-    @media only screen and (max-width: $screen-md-max) {
-        @content;
-    }
-}
 @mixin lg {
-    @media only screen and (max-width: $screen-lg-max) {
-        @content;
-    }
-}
-@mixin xl {
-    @media only screen and (max-width: $screen-xl-max) {
+    @media only screen and (min-width: $screen-lg-min) {
         @content;
     }
 }
@@ -101,16 +89,6 @@ ul {
     border-color: #adadad;
     text-decoration: none;
 }
-.container {
-    margin: 0 auto;
-    width: 50%;
-    @include sm {
-        width: 95%;
-    }
-    @include md {
-        width: 80%;
-    }
-}
 .m-5 {
     margin: 0.5em;
 }
@@ -131,70 +109,87 @@ ul {
         }
     }
 }
-.expiry-date {
-    @include sm {
-        margin-right: 0;
-        margin-bottom: 0.5em;
-    }
-}
-.credit-card {
-    position: relative;
+
+.container {
     margin: 0 auto;
-    height: 200px;
-    width: 40%;
-    &:hover .credit-card-front {
-        transform: rotateY(-180deg)
-    }
-    &:hover .credit-card-back {
-        transform: rotateY(0deg);
-    }
-    .credit-card-front, .credit-card-back {
-        position: absolute;
-        width: 100%;
-        top: 0;
-        background-color: #8896A0;
-        color: #F7F7F7;
-        border-radius: 4px;
-        padding-top: 3em;
-        backface-visibility: hidden;
-    }
-    .credit-card-front {
-        transform: rotateY(0deg);
-        transition: .5s;
-        .dummy-card-number {
-            text-align: center;
-            font-size: 25px;
+    .credit-card {
+        position: relative;
+        margin: 0 auto;
+        height: 200px;
+        &:hover .credit-card-front {
+            transform: rotateY(-180deg)
         }
-        .personal-data {
-            justify-content: space-evenly;
-            .dummy-card-user-name {
-                overflow: hidden;
-                text-overflow: ellipsis;
-                width: 150px;
-                white-space: nowrap;
+        &:hover .credit-card-back {
+            transform: rotateY(0deg);
+        }
+        .credit-card-front, .credit-card-back {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            background-color: #8896A0;
+            color: #F7F7F7;
+            border-radius: 4px;
+            padding-top: 3em;
+            backface-visibility: hidden;
+        }
+        .credit-card-front {
+            transform: rotateY(0deg);
+            transition: .5s;
+            .dummy-card-number {
+                text-align: center;
+                font-size: 25px;
+            }
+            .personal-data {
+                justify-content: space-evenly;
+                .dummy-card-user-name {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    width: 150px;
+                    white-space: nowrap;
+                }
+            }
+        }
+        .credit-card-back {
+            transform: rotateY(180deg);
+            transition: .5s;
+            .dummy-cvc {
+                text-align: right;
+                font-size: 25px;
+                padding-right: 50px;
+                background-color: #adadad;
+            }
+        }
+        @include lg {
+            width: 70%;
+        }
+        @include sm {
+            width: 95%;
+        }
+    }
+    form {
+        input[name="phone-number"] {
+            width: 80%;
+        }
+        input[name="expiry-date"] {
+            width: 70%;
+            @include sm {
+                width: 100%;
+            }
+        }
+        .expiry-date {
+            @include sm {
+                margin-right: 0;
+                margin-bottom: 0.5em;
             }
         }
     }
-    .credit-card-back {
-        transform: rotateY(180deg);
-        transition: .5s;
-        .dummy-cvc {
-            text-align: right;
-            font-size: 25px;
-            padding-right: 50px;
-            background-color: #adadad;
-        }
-    }
-    @include xl {
-        width: 70%;
+    .developer {
+        margin-top: 2em;
     }
     @include lg {
-        width: 80%;
+        width: 500px;
     }
     @include sm {
-        width: 90%;
+        width: 95%;
     }
-}
-.developer {
-    margin-top: 2em;
 }

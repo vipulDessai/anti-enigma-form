@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wise Form</title>
+    <title>Anti Enigma Form</title>
     <link rel="stylesheet" href="./build/style.css">
 </head>
 
@@ -57,25 +57,27 @@
         </div>
         <form>
             <div class="m-5 flex">
-                <input type="text" placeholder="Card Number" class="form-control" id="card-number"
+                <input type="text" name="card-number" placeholder="Card Number" class="form-control" id="card-number"
                     aria-describedby="card-number" maxlength="19">
             </div>
             <div class="m-5 flex">
-                <input type="text" placeholder="Name" class="form-control" id="card-user-name"
+                <input type="text" name="card-user-name" placeholder="Name" class="form-control" id="card-user-name"
                     aria-describedby="card-user-name" maxlength="50">
             </div>
             <div class="m-5 flex">
-                <select name="country-code" id="country-code" class="form-control select flex-s m-r-10">
-                    <option>+91</option>
-                    <option>001</option>
+                <select name="country-code" id="country-code" class="form-control select flex-s m-r-10"
+                    aria-describedby="country-code">
+                    <option value="10" data-maxlength="10">+91</option>
+                    <option value="11" data-maxlength="11">001</option>
                 </select>
-                <input type="text" placeholder="Phone Number" class="form-control" id="phone-number"
-                    aria-describedby="expiry-date" maxlength="10">
+                <input type="text" name="phone-number" placeholder="Phone Number" class="form-control" id="phone-number"
+                    aria-describedby="phone-number" maxlength="10">
             </div>
             <div class="m-5 flex flex-wrap">
-                <input type="text" placeholder="Valid Thru" class="form-control m-r-10 expiry-date" id="expiry-date"
+                <input type="text" name="expiry-date" placeholder="Valid Thru" class="form-control m-r-10 expiry-date" id="expiry-date"
                     aria-describedby="expiry-date" maxlength="5">
-                <input type="password" placeholder="CVC" class="form-control flex-s" id="cvc" aria-describedby="cvc" maxlength="3">
+                <input type="password" name="cvc" placeholder="CVC" class="form-control flex-s" id="cvc" 
+                    aria-describedby="cvc" maxlength="3">
             </div>
             <div class="m-5 flex">
                 <input type="submit" class="btn w-100" value="Submit">
